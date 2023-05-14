@@ -4,6 +4,7 @@
   import Bar from "./lib/Bar.svelte";
   import Canvas from "./lib/Canvas.svelte";
   import { klassen } from "./lib/stores";
+  import Head from "./lib/Head.svelte";
 
   function clearStorage() {
     if ($klassen != null) {
@@ -20,6 +21,7 @@
 </script>
 
 <main>
+  <Head />
   <Bar />
   <Canvas />
 </main>

@@ -20,7 +20,7 @@
 <style>
     div {
         position: absolute;
-        top: 1.3rem;
+        top: 2.5rem;
         right: 2rem;
         font-size: 3rem;
         opacity: 30%;
