@@ -1,13 +1,13 @@
 <script>
     // @ts-nocheck
     import KlassenButton from "./KlassenButton.svelte";
-    import Relationen from "./Relationen.svelte";
+    import RelationenButton from "./RelationenButton.svelte";
     import ClearButton from "./ClearButton.svelte";
 </script>
 
 <div class="outer boxShadow">
     <KlassenButton />
-    <Relationen />
+    <RelationenButton />
     <ClearButton />
 </div>
 
