@@ -95,14 +95,16 @@
 
 {#if inputVisible}
     <div class="popup">
-        <input
-            class="nameInput"
-            bind:value={neueName}
-            placeholder="Name.."
-            on:keypress={enterHandle}
-            use:init
-        />
-        <button class="nameButton" on:click={neueKlasse}>[+] </button>
+        <div class="inner">
+            <input
+                class="nameInput"
+                bind:value={neueName}
+                placeholder="Name.."
+                on:keypress={enterHandle}
+                use:init
+            />
+            <button class="nameButton" on:click={neueKlasse}>[+] </button>
+        </div>
     </div>
 {/if}
 
@@ -111,6 +113,9 @@
 <style>
     .popup {
         position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         padding: 0.5rem;
         background-color: transparent;
@@ -121,7 +126,7 @@
         font-size: 1rem;
         border-radius: 0.5rem;
         border-width: 0.2rem;
-        background-color: rgb(227, 227, 227);
+        background-color: rgb(247, 247, 247);
     }
     button {
         font-size: 1rem;
@@ -136,5 +141,13 @@
         font-size: 1rem;
         background-color: rgb(208, 208, 208);
         padding: 0.1rem;
+    }
+
+    .inner {
+        width: fit-content;
+        padding: 0.5rem;
+        border: 0.2rem solid rgb(59, 59, 59);
+        border-radius: 0.5rem;
+        background-color: rgb(208, 208, 208);
     }
 </style>

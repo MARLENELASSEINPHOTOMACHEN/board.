@@ -14,6 +14,7 @@
     let inVis = false;
     let entA;
     let entB;
+    let desc;
     let start;
     let end;
     let nextField = ""; // to focus next input on nextHandle()
@@ -48,8 +49,9 @@
                 {
                     start: $newLine[0].name,
                     end: $newLine[1].name,
-                    entStart: entA,
-                    entEnd: entB,
+                    descStart: entA,
+                    descEnd: entB,
+                    descMain: desc,
                     typ: relType,
                 },
             ];
@@ -59,8 +61,9 @@
                 {
                     start: $newLine[0].name,
                     end: $newLine[1].name,
-                    entStart: entA,
-                    entEnd: entB,
+                    descStart: entA,
+                    descEnd: entB,
+                    descMain: desc,
                     typ: relType,
                 },
             ];
@@ -68,7 +71,7 @@
         $newLine[0] = null;
         $newLine[1] = null;
     }
-    function drawLine(s, e, t, ea, eb) {
+    function drawLine(s, e, t, ea, eb, em) {
         if (t != null) {
             relType = t;
         }
@@ -86,6 +89,9 @@
                         ),
                         endLabel: LeaderLine.captionLabel(
                             eb != null ? eb : entB
+                        ),
+                        middleLabel: LeaderLine.captionLabel(
+                            em != null ? em : desc
                         ),
                     }),
                 ];
@@ -150,8 +156,9 @@
                     $klassen[sid].link,
                     $klassen[eid].link,
                     e.typ,
-                    e.entStart,
-                    e.entEnd
+                    e.descStart,
+                    e.descEnd,
+                    e.descMain
                 );
             });
         }
@@ -160,21 +167,29 @@
 
 {#if inVis}
     <div class="popup">
-        <input
-            class="inputA"
-            bind:value={entA}
-            placeholder="Multiplizität von.."
-            on:keypress={nextHandle}
-            use:init
-        />
-        <input
-            class="InputB"
-            bind:value={entB}
-            bind:this={nextField}
-            placeholder="Multiplizität zu.."
-            on:keypress={enterHandle}
-        />
-        <button class="nameButton" on:click={createLine}>[+] </button>
+        <div class="inner boxShadow">
+            <input
+                class="inputA nameInput"
+                bind:value={entA}
+                placeholder="Multiplizität von.."
+                on:keypress={nextHandle}
+                use:init
+            />
+            <input
+                class="InputB nameInput"
+                bind:value={entB}
+                bind:this={nextField}
+                placeholder="Multiplizität zu.."
+                on:keypress={enterHandle}
+            />
+            <button class="nameButton" on:click={createLine}>[+] </button>
+            <input
+                class="InputDescription nameInput"
+                bind:value={desc}
+                placeholder="Beschreibung"
+                on:keypress={enterHandle}
+            />
+        </div>
     </div>
 {/if}
 
@@ -184,18 +199,49 @@
 <style>
     .popup {
         position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         padding: 0.5rem;
         background-color: transparent;
         top: 0;
         left: 0;
     }
-    button {
+    .inner {
+        width: fit-content;
+        padding: 0.5rem;
+        border: 0.2rem solid rgb(59, 59, 59);
+        border-radius: 0.5rem;
+        background-color: rgb(208, 208, 208);
+    }
+    .boxShadow {
+        -webkit-box-shadow: 0.2rem 0.2rem 0px 0px rgba(0, 0, 0, 0.56);
+        -moz-box-shadow: 0.2rem 0.2rem 0px 0px rgba(0, 0, 0, 0.56);
+        box-shadow: 0.2rem 0.2rem 0px 0px rgba(0, 0, 0, 0.56);
+    }
+    .barButton {
         font-size: 1rem;
         background-color: aquamarine;
         border-color: rgb(118, 118, 118);
         border-radius: 0.25rem;
         border-style: outset;
         padding: 0.4rem;
+    }
+    .nameInput {
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        border-width: 0.2rem;
+        background-color: rgb(247, 247, 247);
+    }
+
+    .nameButton {
+        border-color: rgb(118, 118, 118);
+        border-radius: 0.25rem;
+        border-style: outset;
+        padding: 0.4rem;
+        font-size: 1rem;
+        background-color: rgb(208, 208, 208);
+        padding: 0.1rem;
     }
 </style>
