@@ -5,7 +5,7 @@
     <div class="right flex">
         <a href="https://github.com/MARLENELASSEINPHOTOMACHEN/board.">
             <img
-                src="https://img.shields.io/badge/GitHub-v0.1.1-lightgrey.svg"
+                src="https://img.shields.io/badge/GitHub-v0.1.2-lightgrey.svg"
                 alt="github"
             />
         </a>

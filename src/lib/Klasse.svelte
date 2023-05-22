@@ -11,7 +11,11 @@
     export let name;
     let cname = false;
     let nameFieldBind;
-    //hier vielleicht noch name als schlüssel weg zu kid :)
+    let lock = false; //ausgewählt in relationen overlay
+    $: if (!$selecting) {
+        lock = false;
+    }
+    //TODO: hier vielleicht noch name als schlüssel weg zu kid :)
     $: kid = $klassen.findIndex(findName);
 
     onMount(() => {
@@ -122,16 +126,19 @@
     class="aussen draggable"
     class:blass={$abfallAktiv && moving}
     class:fix={$selecting}
+    class:locked={lock}
     style="left: {$klassen[kid].left}px; top: {$klassen[kid].top}px;"
     bind:this={$klassen[kid].link}
     on:click={() => {
         if ($selecting) {
             $newLine[$newLine[0] == null ? 0 : 1] = $klassen[kid];
+            lock = true;
         }
     }}
     on:keydown={() => {
         if ($selecting) {
             $newLine[$newLine[0] == null ? 0 : 1] = $klassen[kid];
+            lock = true;
         }
     }}
     on:mouseleave={() => {
@@ -200,6 +207,11 @@
     }
     .fix > .name {
         cursor: pointer;
+    }
+    .locked {
+        -webkit-box-shadow: 0.2rem 0.2rem aquamarine;
+        -moz-box-shadow: 0.2rem 0.2rem aquamarine;
+        box-shadow: 0.2rem 0.2rem aquamarine;
     }
     .edit {
         cursor: text;

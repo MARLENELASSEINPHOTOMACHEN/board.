@@ -42,6 +42,7 @@
         el.focus();
     }
     function createLine() {
+        inVis = false;
         drawLine();
 
         if ($lineData == null) {
