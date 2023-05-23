@@ -1,14 +1,17 @@
+<script>
+    // @ts-nocheck
+    import OopsButton from "./OopsButton.svelte";
+    import VBadge from "./VBadge.svelte";
+</script>
+
 <div class="flex out">
     <div class="left flex">
         <span class="name">board.</span>
     </div>
     <div class="right flex">
-        <a href="https://github.com/MARLENELASSEINPHOTOMACHEN/board.">
-            <img
-                src="https://img.shields.io/badge/GitHub-v0.1.2-lightgrey.svg"
-                alt="github"
-            />
-        </a>
+        <OopsButton />
+
+        <VBadge />
     </div>
 </div>
 
@@ -16,6 +19,9 @@
     .flex {
         display: flex;
         align-items: center;
+    }
+    .right {
+        gap: 0.5rem;
     }
     .out {
         justify-content: space-between;

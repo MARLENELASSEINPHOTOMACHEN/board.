@@ -1,7 +1,7 @@
 <script>
     // @ts-nocheck
     import { onMount } from "svelte";
-    import { klassen, lineData, offset } from "./stores.js";
+    import { klassen, lineData } from "./stores.js";
     import { lines } from "./stores.js";
     import { selecting } from "./stores.js";
     import { newLine } from "./stores.js";
@@ -43,8 +43,6 @@
     }
     function createLine() {
         inVis = false;
-        drawLine();
-
         if ($lineData == null) {
             $lineData = [
                 {
@@ -71,7 +69,9 @@
         }
         $newLine[0] = null;
         $newLine[1] = null;
+        drawLine();
     }
+
     function drawLine(s, e, t, ea, eb, em) {
         if (t != null) {
             relType = t;
@@ -130,6 +130,7 @@
         }
         $selecting = false;
     }
+
     onMount(() => {
         if ($lineData != null) {
             $lineData.forEach((e) => {
@@ -148,9 +149,7 @@
                     }
                 }
                 let sid = $klassen.findIndex(findstart);
-                console.log(sid);
                 let eid = $klassen.findIndex(findend);
-                console.log(eid);
                 start = $klassen[sid].link;
                 end = $klassen[eid].link;
                 relType = e.typ;

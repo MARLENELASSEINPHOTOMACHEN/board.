@@ -2,7 +2,7 @@
     // @ts-nocheck
     import Attribute from "./Attribute.svelte";
     import Methoden from "./Methoden.svelte";
-    import { abfallAktiv, lineData, newLine, offset } from "./stores.js";
+    import { abfallAktiv, lineData, newLine, offset, oops } from "./stores.js";
     import { klassen } from "./stores.js";
     import { lines } from "./stores.js";
     import { selecting } from "./stores.js";
@@ -11,6 +11,9 @@
     export let name;
     let cname = false;
     let nameFieldBind;
+    //old position before trashing class
+    let oldX;
+    let oldY;
     let lock = false; //ausgewählt in relationen overlay
     $: if (!$selecting) {
         lock = false;
@@ -40,6 +43,8 @@
     function onMouseDown() {
         $offset = 0;
         moving = true;
+        oldX = $klassen[kid].left;
+        oldY = $klassen[kid].top;
     }
 
     function onMouseMove(e) {
@@ -94,6 +99,8 @@
         // nochmal überarbeiten das vllt check nicht auf mooving ist
         if ($abfallAktiv && moving) {
             moving = false;
+            //reset "trash" oops
+            $oops = [];
             let temp = [];
             $lines.forEach((e) => {
                 if (
@@ -102,7 +109,7 @@
                 ) {
                     e.remove();
                 } else {
-                    temp.push(e);
+                    $oops.push(e);
                 }
             });
             $lines = temp;
@@ -111,11 +118,16 @@
                 $lineData.forEach((e) => {
                     if (e.start != name && e.end != name) {
                         temp.push(e);
+                    } else {
+                        $oops.push(e);
                     }
                 });
                 $lineData = temp;
             }
             $klassen[kid].vis = false;
+            $klassen[kid].left = oldX;
+            $klassen[kid].top = oldY;
+            $oops.push({ klassenId: kid });
         }
         moving = false;
     }
