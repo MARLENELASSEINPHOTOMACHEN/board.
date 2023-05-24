@@ -34,12 +34,4 @@
     .name {
         color: antiquewhite;
     }
-    a {
-        align-items: center;
-        /* margin: auto; */
-        padding: 0;
-    }
-    img {
-        display: block;
-    }
 </style>
