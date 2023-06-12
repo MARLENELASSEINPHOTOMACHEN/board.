@@ -4,7 +4,6 @@
 
   let inputVisible = false;
   let neueName = "";
-  let abstractCheck;
   function neueKlasse() {
     if (neueName == "") {
       neueName = "Neue Klasse";
@@ -15,7 +14,7 @@
           {
             vis: true,
             name: neueName,
-            typ: abstractCheck.checked ? 1 : 0,
+            typ: 2,
             attribute: [
               {
                 text: "Attribut",
@@ -43,7 +42,6 @@
           {
             vis: true,
             name: neueName,
-            typ: abstractCheck.checked ? 1 : 0,
             attribute: [
               {
                 text: "Attribut",
@@ -107,19 +105,11 @@
         use:init
       />
       <button class="nameButton" on:click={neueKlasse}>[+] </button>
-      <br />
-      <input
-        type="checkbox"
-        class="abstractButton"
-        id="abstractCheckBox"
-        bind:this={abstractCheck}
-      />
-      <label for="abstractCheckbox">abstract</label>
     </div>
   </div>
 {/if}
 
-<button class="barButton" on:click={toggleName}>[Klasse]</button>
+<button class="barButton" on:click={toggleName}>[Interface]</button>
 
 <style>
   .popup {
@@ -144,7 +134,7 @@
     border-color: rgb(118, 118, 118);
     border-radius: 0.25rem;
     border-style: outset;
-    background-color: violet;
+    background-color: rgb(234, 190, 234);
     padding: 0.4rem;
   }
 

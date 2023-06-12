@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 
 export const klassen = writable(JSON.parse(localStorage.getItem('klassen')));
+//typ: 0:normale klasse 1:abstract 2:interface
 
 klassen.subscribe((value) => localStorage.klassen = JSON.stringify(value));
 
