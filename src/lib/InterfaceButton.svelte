@@ -42,6 +42,7 @@
           {
             vis: true,
             name: neueName,
+            typ: 2,
             attribute: [
               {
                 text: "Attribut",
