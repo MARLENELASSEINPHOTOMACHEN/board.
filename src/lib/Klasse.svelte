@@ -107,7 +107,7 @@
         if ($klassen[kid].link == e.end || $klassen[kid].link == e.start) {
           e.remove();
         } else {
-          $oops.push(e);
+          // $oops.push(e);
         }
       });
       $lines = temp;
