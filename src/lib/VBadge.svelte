@@ -1,5 +1,5 @@
 <script>
-  let version = "v0.2.1";
+  let version = "v0.2.2";
 </script>
 
 <a class="outer" href="https://github.com/MARLENELASSEINPHOTOMACHEN/board.">

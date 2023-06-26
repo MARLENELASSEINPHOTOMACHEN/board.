@@ -129,6 +129,14 @@
     }
     moving = false;
   }
+
+  onMount(() => {
+    if ($lines != null && $lines.length != 0) {
+      $lines.forEach((e) => {
+        e.update();
+      });
+    }
+  });
 </script>
 
 <!-- TODO: vielleicht efiizientere und oder schönere lösung finden für :mousemove -->
