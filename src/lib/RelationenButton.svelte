@@ -124,8 +124,9 @@
     }
     $selecting = false;
   }
-  async function waitDom() {
-    await tick();
+  // async function waitDom() {
+  //   await tick();
+  onMount(() => {
     if ($lineData != null) {
       $lineData.forEach((e) => {
         function findstart(em) {
@@ -157,8 +158,8 @@
         );
       });
     }
-  }
-  waitDom();
+  });
+  // waitDom();
 </script>
 
 {#if inVis}
