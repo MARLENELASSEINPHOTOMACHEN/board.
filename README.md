@@ -1,6 +1,6 @@
 # board
 
-hi this is a personal project to learn svelte and github
+hi :)
 
 # how to install
 
