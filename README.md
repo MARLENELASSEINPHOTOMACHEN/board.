@@ -17,7 +17,7 @@ hi :)
 
 ## how to run
 
-run dev on local server:
+run dev on local server: (only works on edge for me idk)
 
         npm run dev
 
